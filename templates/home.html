@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <section class="hero-panel glass">
+    <div class="hero-text">
+      <p class="eyebrow">CogniCode Dashboard</p>
+      <h1>Welcome back, {{ user_name }}</h1>
+      <p class="hero-subtitle">Your adaptive learning journey continues.</p>
+
+      <div class="hero-tags">
+        <span>AI-Guided Learning</span>
+        <span>Adaptive Tracks</span>
+        <span>Cognitive Feedback</span>
+      </div>
+    </div>
+
+    <aside class="profile-card glass">
+      <div class="profile-top">
+        <div class="avatar-ring">
+          <div class="avatar-core">CC</div>
+        </div>
+        <div>
+          <h3>{{ user_name }}</h3>
+          <p>{{ user_email }}</p>
+        </div>
+      </div>
+
+      <div class="profile-meta">
+        <div class="meta-box">
+          <span>Status</span>
+          <strong>{{ status }}</strong>
+        </div>
+        <div class="meta-box">
+          <span>Focus Mode</span>
+          <strong>Enabled</strong>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <a href="{{ url_for('logout') }}" class="outline-btn">Logout</a>
+      </div>
+    </aside>
+  </section>
+
+  <a href="{{ url_for('analytics') }}" class="analytics-btn glass">
+  <div class="analytics-btn-content">
+    
+
+    <div class="analytics-text">
+      <h2>View Analytics</h2>
+      <p>Track time, focus, typing speed and performance insights</p>
+    </div>
+  </div>
+
+  <div class="analytics-arrow">→</div>
+</a>
+      <div class="analytics-hero-right">
+        <span class="analytics-hero-link">Open Dashboard →</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="levels-section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Learning Tracks</p>
+        <h2>Select Your Course Level</h2>
+      </div>
+      <p class="section-note">Choose the path that matches your current skill level.</p>
+    </div>
+
+    <div class="level-grid">
+      <a href="{{ url_for('level', level='easy') }}" class="level-card glass art-card easy-card">
+        <div class="card-art">
+          <div class="art-orb easy-orb"></div>
+          
+        </div>
+        <div class="level-badge easy">Easy</div>
+        <h3>Easy Track</h3>
+        <p>Begin with fundamentals, simple syntax, and confidence-building practice.</p>
+        <span class="card-link">Open Track</span>
+      </a>
+
+      <a href="{{ url_for('level', level='moderate') }}" class="level-card glass art-card moderate-card">
+        <div class="card-art">
+          <div class="art-orb moderate-orb"></div>
+          
+        </div>
+        <div class="level-badge moderate">Moderate</div>
+        <h3>Moderate Track</h3>
+        <p>Develop stronger logic, problem-solving speed, and coding consistency.</p>
+        <span class="card-link">Open Track</span>
+      </a>
+
+      <a href="{{ url_for('level', level='advanced') }}" class="level-card glass art-card advanced-card">
+        <div class="card-art">
+          <div class="art-orb advanced-orb"></div>
+          
+        </div>
+        <div class="level-badge advanced">Advanced</div>
+        <h3>Advanced Track</h3>
+        <p>Take on optimized solutions, deeper concepts, and advanced challenges.</p>
+        <span class="card-link">Open Track</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

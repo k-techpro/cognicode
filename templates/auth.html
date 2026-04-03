@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="page">
+  <section class="left">
+    <div>
+      <div class="brand-row">
+        <div class="brain-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 4.5a3 3 0 0 0-4.5 2.6A3.5 3.5 0 0 0 5 14v.2a3.3 3.3 0 0 0 5 2.8"/>
+            <path d="M15 4.5a3 3 0 0 1 4.5 2.6A3.5 3.5 0 0 1 19 14v.2a3.3 3.3 0 0 1-5 2.8"/>
+            <path d="M9 4.8C9 6 10 6.5 10 7.6S9 9.2 9 10.4s1 1.6 1 2.8S9 14.8 9 16"/>
+            <path d="M15 4.8C15 6 14 6.5 14 7.6s1 1.6 1 2.8-1 1.6-1 2.8 1 1.6 1 2.8"/>
+            <path d="M12 4v16"/>
+          </svg>
+        </div>
+        <h1 class="logo-text">CogniCode</h1>
+      </div>
+
+      <p class="tagline">Think. Code. Evolve.</p>
+
+      <div class="features">
+        <article class="feature">
+          <span class="dot"></span>
+          <div>
+            <h3>AI-Powered Intelligence</h3>
+            <p>Harness the power of cognitive computing</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <span class="dot"></span>
+          <div>
+            <h3>Adaptive Learning</h3>
+            <p>Personalized guidance for every learner</p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <span class="dot"></span>
+          <div>
+            <h3>Continuous Evolution</h3>
+            <p>Grow through smart feedback and learning tracks</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="code-box">
+      <div class="code-line">&gt; initialize_cognitive_engine()</div>
+      <div class="code-line dim">Loading neural pathways...</div>
+      <div class="code-line success">✓ System ready</div>
+    </div>
+  </section>
+
+  <div class="right-wrap">
+    <section class="right-card">
+      <div class="form-shell">
+        <h2 class="title">Welcome Back</h2>
+        <p class="subtitle">Continue your journey with CogniCode</p>
+
+        {% if error %}
+        <p class="error-text">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+          <div class="field">
+            <label for="email">Email Address</label>
+            <div class="input-wrap">
+              <input id="email" class="input" type="email" name="email" placeholder="something@gmail.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <input id="password" class="input" type="password" name="password" placeholder="Minimum 8 characters" required>
+              <button class="icon-btn" type="button" onclick="togglePassword()">👁</button>
+            </div>
+          </div>
+
+          <a href="#" class="forgot">Forgot Password?</a>
+
+          <button class="primary-btn" type="submit">
+            <span>Sign In</span>
+          </button>
+        </form>
+
+        <p class="switch-text">
+          Demo Login → <span class="demo-text">something@gmail.com / 12345678</span>
+        </p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+function togglePassword() {
+  const input = document.getElementById("password");
+  input.type = input.type === "password" ? "text" : "password";
+}
+</script>
+
+{% endblock %}

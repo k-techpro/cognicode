@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <section class="hero-panel glass level-hero">
+    <div class="hero-text">
+      <p class="eyebrow">CogniCode Practice Assist</p>
+      <h1>Similar Logic Practice</h1>
+      <p class="hero-subtitle">Use hints from the main question and practice with two similar problems.</p>
+    </div>
+
+    <a href="{{ return_main_url }}" class="outline-btn">Back</a>
+  </section>
+
+  <section class="similar-grid">
+    <div class="similar-left glass">
+      <div class="mini-head">
+        <p class="eyebrow">Main Question Guidance</p>
+        <h2>{{ title }}</h2>
+      </div>
+
+      <div class="hint-stack">
+        {% for hint in main_hints %}
+        <div class="hint-card">
+          <span class="hint-number">Hint {{ loop.index }}</span>
+          <p>{{ hint }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="similar-right">
+      <div class="similar-question-card glass">
+        <div class="mini-head">
+          <p class="eyebrow">Practice 1</p>
+          <h2>{{ similar_one.title }}</h2>
+        </div>
+
+        <div class="problem-box">
+          <p>{{ similar_one.question }}</p>
+        </div>
+
+        <textarea class="code-editor practice-editor" spellcheck="false">{{ similar_one.starter_code }}</textarea>
+      </div>
+
+      <div class="similar-question-card glass">
+        <div class="mini-head">
+          <p class="eyebrow">Practice 2</p>
+          <h2>{{ similar_two.title }}</h2>
+        </div>
+
+        <div class="problem-box">
+          <p>{{ similar_two.question }}</p>
+        </div>
+
+        <textarea class="code-editor practice-editor" spellcheck="false">{{ similar_two.starter_code }}</textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="similar-bottom-action">
+    <a href="{{ return_main_url }}" class="primary-btn return-main-btn">
+      Go to Main Problem
+    </a>
+  </section>
+</main>
+
+{% endblock %}

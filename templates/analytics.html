@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <section class="hero-panel glass">
+    <div>
+      <p class="eyebrow">CogniCode Intelligence</p>
+      <h1>Student Performance Analytics</h1>
+      <p class="hero-subtitle">
+        Monitor learning behavior, coding focus, time investment, and overall performance.
+      </p>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="outline-btn">Back to Home</a>
+  </section>
+
+  <section class="analytics-grid">
+    <div class="glass stat-card">
+      <h3>⏱ Total Time Spent</h3>
+      <p id="timeSpent">0 min</p>
+      <span>Overall coding engagement time</span>
+    </div>
+
+    <div class="glass stat-card">
+      <h3>⌨ Typing Speed</h3>
+      <p id="typingSpeed">0 CPM</p>
+      <span>Typing consistency and activity level</span>
+    </div>
+
+    <div class="glass stat-card">
+      <h3>🧠 Focus Score</h3>
+      <p id="focusScore">0%</p>
+      <span>Estimated focus based on typing behavior</span>
+    </div>
+
+    <div class="glass stat-card">
+      <h3>✅ Problems Solved</h3>
+      <p id="problemsSolved">0</p>
+      <span>Total successfully solved problems</span>
+    </div>
+
+    <div class="glass stat-card">
+      <h3>📈 Accuracy</h3>
+      <p id="accuracyScore">0%</p>
+      <span>Correct attempts compared to total attempts</span>
+    </div>
+
+    <div class="glass stat-card">
+      <h3>🔥 Productivity</h3>
+      <p id="productivityScore">0%</p>
+      <span>Combined indicator of speed, focus, and activity</span>
+    </div>
+  </section>
+
+  <section class="analytics-bottom-grid">
+    <div class="glass analytics-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Performance Overview</p>
+          <h2>Student Insight Summary</h2>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span>Learning Pattern</span>
+          <strong id="learningPattern">Balanced Learner</strong>
+        </div>
+        <div class="summary-item">
+          <span>Strongest Area</span>
+          <strong id="strongArea">Problem Persistence</strong>
+        </div>
+        <div class="summary-item">
+          <span>Needs Improvement</span>
+          <strong id="weakArea">Typing Consistency</strong>
+        </div>
+        <div class="summary-item">
+          <span>Engagement Level</span>
+          <strong id="engagementLevel">Moderate</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass analytics-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Chart View</p>
+          <h2>Daily Time Spent</h2>
+        </div>
+      </div>
+      <canvas id="dailyTimeChart"></canvas>
+    </div>
+
+    <div class="glass analytics-panel full-width-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Chart View</p>
+          <h2>Total Time vs Daily Average</h2>
+        </div>
+      </div>
+      <canvas id="timeComparisonChart"></canvas>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const DATA = JSON.parse('{{ daily_time | tojson | safe }}');
+  const LABELS = JSON.parse('{{ daily_labels | tojson | safe }}');
+</script>
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+{% endblock %}

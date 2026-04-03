@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <section class="hero-panel glass level-hero">
+    <div class="hero-text">
+      <p class="eyebrow">CogniCode {{ level|title }} Track</p>
+      <h1>{{ level|title }} Learning Path</h1>
+      <p class="hero-subtitle">Choose the technology you want to learn and enter the coding workspace.</p>
+    </div>
+
+    <div class="level-pill {{ level }}">
+      {{ level|title }}
+    </div>
+  </section>
+
+  <section class="levels-section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Technology Modules</p>
+        <h2>Select Your Program</h2>
+      </div>
+      <a href="{{ url_for('home') }}" class="outline-btn">Back to Home</a>
+    </div>
+
+    <div class="tech-grid">
+      <a href="{{ url_for('problem', language='python') }}" class="tech-card glass">
+        <div class="tech-icon">Py</div>
+        <h3>Python</h3>
+        <p>Work with syntax, operators, loops, functions, and problem-solving logic.</p>
+        <span class="card-link">Open Python Lab</span>
+      </a>
+
+      <a href="{{ url_for('problem', language='java') }}" class="tech-card glass">
+        <div class="tech-icon">Jv</div>
+        <h3>Java</h3>
+        <p>Practice object-oriented structure, methods, flow control, and output logic.</p>
+        <span class="card-link">Open Java Lab</span>
+      </a>
+
+      <a href="{{ url_for('problem', language='css') }}" class="tech-card glass">
+        <div class="tech-icon">Cs</div>
+        <h3>CSS</h3>
+        <p>Build visual styling, responsive design, layouts, and UI presentation skills.</p>
+        <span class="card-link">Open CSS Lab</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <!-- HERO -->
+  <section class="hero-panel glass level-hero">
+    <div class="hero-text">
+      <p class="eyebrow">CogniCode Coding Lab</p>
+      <h1>{{ language|title }} Workspace</h1>
+      <p class="hero-subtitle">{{ question }}</p>
+    </div>
+
+    <a href="{{ url_for('level', level='easy') }}" class="outline-btn">Back to Level</a>
+  </section>
+
+  <!-- WORKSPACE -->
+  <section class="workspace-grid">
+
+    <!-- LEFT SIDE -->
+    <div class="workspace-left">
+
+      <!-- PROBLEM -->
+      <div class="problem-side glass">
+        <div class="mini-head">
+          <p class="eyebrow">Problem Brief</p>
+          <h2>{{ title }}</h2>
+        </div>
+
+        <div class="problem-box">
+          <p>{{ description }}</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="meta-box">
+            <span>Language</span>
+            <strong>{{ language|upper }}</strong>
+          </div>
+          <div class="meta-box">
+            <span>Difficulty</span>
+            <strong>{{ difficulty }}</strong>
+          </div>
+        </div>
+
+        <div class="info-grid" style="margin-top:14px;">
+          <div class="meta-box">
+            <span>Wrong Attempts</span>
+            <strong>{{ wrong_attempts }}</strong>
+          </div>
+          <div class="meta-box">
+            <span>Status</span>
+            <strong>{{ status_message if status_message else "Waiting for run" }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="output-side glass">
+        <div class="editor-topbar">
+          <div class="editor-tabs">
+            <span class="editor-tab active">Output</span>
+            <span class="editor-tab">Adaptive Help</span>
+          </div>
+          <span class="editor-status">Live Result</span>
+        </div>
+
+        <div class="output-panel output-panel-standalone">
+          <h3>Output</h3>
+          <pre id="outputBox">{{ output if output else "Run your code to see output here." }}</pre>
+        </div>
+
+        <!-- SUCCESS BOX -->
+        {% if success_message %}
+        <div class="success-pass-box">
+          <p>{{ success_message }}</p>
+
+          {% if has_next_question %}
+          <a href="{{ next_question_url }}" class="primary-btn next-question-btn">
+            Go to Next Question →
+          </a>
+          {% else %}
+          <button class="primary-btn next-question-btn" disabled>
+            All Questions Completed
+          </button>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- ADAPTIVE BUTTONS -->
+        <div class="adaptive-actions">
+
+          {% if show_hint_btn %}
+          <form method="POST">
+            <input type="hidden" name="code" value="{{ code }}">
+            <button type="submit" name="action" value="hint" class="outline-btn full-btn">
+              Hint 💡
+            </button>
+          </form>
+          {% endif %}
+
+          {% if show_solution_btn %}
+          <form method="POST">
+            <input type="hidden" name="code" value="{{ code }}">
+            <button type="submit" name="action" value="solution" class="outline-btn full-btn">
+              Solution 📘
+            </button>
+          </form>
+          {% endif %}
+
+          {% if show_similar_btn %}
+          <a href="{{ similar_page_url }}" class="outline-btn full-btn">
+            Similar Question 🔁
+          </a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE (EDITOR) -->
+    <div class="editor-side glass">
+      <div class="editor-topbar">
+        <div class="editor-tabs">
+          <span class="editor-tab active">{{ file_name }}</span>
+          <span class="editor-tab">Editor</span>
+        </div>
+        <span class="editor-status">Cognitive Engine Active</span>
+      </div>
+
+      <form method="POST" class="editor-form">
+        <textarea
+          id="code"
+          name="code"
+          class="code-editor large-editor"
+          spellcheck="false"
+          placeholder="Write your code here..."
+        >{{ code }}</textarea>
+
+        <div class="editor-actions">
+          <button type="submit" name="action" value="run" class="primary-btn editor-run-btn">
+            Run Code ▶
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </section>
+</main>
+
+<!-- POPUP -->
+{% if show_similar_popup %}
+<div class="popup-overlay">
+  <div class="popup-card glass">
+    <h2>Practice Recommended</h2>
+    <p>You have multiple wrong attempts. Try similar questions to improve.</p>
+
+    <div class="popup-actions">
+      <a href="{{ similar_page_url }}" class="primary-btn">
+        Open Similar Practice →
+      </a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="stars"></div>
+
+<main class="dash-page">
+  <section class="hero-panel glass level-hero">
+    <div class="hero-text">
+      <p class="eyebrow">CogniCode Course</p>
+      <h1>{{ tech|title }} Module</h1>
+      <p class="hero-subtitle">You selected {{ tech|title }}. The coding workspace can be connected next.</p>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="outline-btn">Back Home</a>
+  </section>
+</main>
+
+{% endblock %}
