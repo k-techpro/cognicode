@@ -94,20 +94,10 @@ Password: 12345678
 
 ---
 
-## 📸 Screenshots (Add later)
-- Login Page
-- Dashboard
-- Coding Workspace
-- Analytics Page
+
 
 ---
 
-## 🚀 Future Improvements
-- Real code execution engine (Python/Java)
-- AI-based difficulty adaptation
-- Leaderboard system
-- Cloud deployment
-- User authentication with database
 
 ---
 
