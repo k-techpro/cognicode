@@ -101,8 +101,7 @@ Password: 12345678
 
 ---
 
-## 👨‍💻 Author
-Shakthi (Kombaiya)  
+Created by **kombaiya** **k-techpro**
 BE CSE – 3rd Year  
 
 ---
